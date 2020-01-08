@@ -47,3 +47,4 @@ TEMPLATES = [
 ]
 
 ROOT_URLCONF = "testapp.urls"
+

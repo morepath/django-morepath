@@ -1,0 +1,59 @@
+* Make morepath work with a Django request + path.
+
+* Make morepath respond with a Django response, possibly a subclass ala
+  DRF.
+
+Use django-wsgi
+
+
+Dependencies on request:
+
+We can solve this by using django-wsgi and then convincing it to use
+Morepath's subclass.
+
+* app.py
+
+
+  request.application_url
+
+  request.view_name - Morepath specific.
+
+  request.method
+
+  request.GET - get parameters
+
+  request.app - Morepath specific
+
+  request.unconsumed - Morepath specific
+
+  request.clear_after() - Morepath specific.
+
+  request.host - in standard morepath tween.
+
+  request.view - Morepath API
+
+  request.link - Morepath API
+
+  request.class_link - Morepath API
+
+  request.child - Morepath API
+
+  request.after - Morepath API
+
+  request.path_code_info - what does this do?
+
+  request.view_code_info
+
+  request.identity
+
+  request._run_after
+
+Response - our usage actually appears API compatible to the Django Response.
+
+Still, would like to use the webob response directly and turn this into
+Django response somehow.
+
+Questions:
+
+* Does this work well if this application is mounted in a larger
+  application? Needs tests.

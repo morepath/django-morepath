@@ -1,5 +1,5 @@
 from django.urls import re_path
+from django_morepath.views import make_morepath_view
+from .app import app
 
-from . import views
-
-urlpatterns = [re_path("(.*)", views.root)]
+urlpatterns = [re_path("(.*)", make_morepath_view(app))]
