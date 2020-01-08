@@ -1,2 +1,3 @@
-def test_one():
-    assert 1 == 2
+def test_attempt(client):
+    r = client.get("/")
+    assert r.json() == {"hello": "world"}
