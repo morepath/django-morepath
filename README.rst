@@ -31,10 +31,10 @@ core library and its few core dependencies (reg and dectate) amount to about
 half the size in lines of code in Django REST Framework!
 
 This isn't a fair comparison, as Django REST Framework also implements a
-serializer library where Morepath does not, but even if you throw in a
-serializer library like Marshmallow_ the combination is still smaller
-than Django REST Framework. Morepath has integration with Marshmallow in
-more.marshmallow_.
+serializer library and admin UI integration where Morepath does not, but even
+if you throw in a serializer library like Marshmallow_ the combination is still
+smaller than Django REST Framework. (Morepath has integration with Marshmallow
+in more.marshmallow_.)
 
 .. _more.marshmallow: https://github.com/morepath/more.marshmallow
 
