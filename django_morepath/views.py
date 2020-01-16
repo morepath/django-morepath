@@ -6,6 +6,8 @@ from http.cookies import SimpleCookie
 
 def make_morepath_view(app):
     def view(request, path):
+        # request._stream.stream.seek(0)
+
         morepath_request = MorepathRequest(request.environ, app)
         morepath_request.make_body_seekable()
 
@@ -36,5 +38,5 @@ def make_morepath_view(app):
             django_response.set_cookie(**cookie_attributes)
         return django_response
 
-    return app
+    return view
 
