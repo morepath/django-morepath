@@ -42,7 +42,7 @@ def make_morepath_view(app):
 
 
 def resolved_segment_count(request_path, unconsumed_path):
-    resolved_path = request_path[0 : -len(unconsumed_path)]
+    resolved_path = request_path[0 : len(request_path) - len(unconsumed_path)]
     if resolved_path.startswith("/"):
         resolved_path = resolved_path[1:]
     if resolved_path.endswith("/"):
