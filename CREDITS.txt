@@ -1,0 +1,9 @@
+CREDITS
+=======
+
+Development
+-----------
+
+* Martijn Faassen (creator)
+
+Special thanks to everyone who helped create Morepath over the years!
