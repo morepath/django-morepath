@@ -6,11 +6,11 @@ from http.cookies import SimpleCookie
 
 def make_morepath_view(app):
     def view(request, path):
-        # request._stream.stream.seek(0)
-
         morepath_request = MorepathRequest(request.environ, app)
+        # consume everything already seen by django
+        for i in range(resolved_segment_count(request.path, path)):
+            morepath_request.unconsumed.pop()
         morepath_request.make_body_seekable()
-
         response = app.publish(morepath_request)
         cookies = SimpleCookie()
         django_response = HttpResponse(
@@ -40,3 +40,13 @@ def make_morepath_view(app):
 
     return view
 
+
+def resolved_segment_count(request_path, unconsumed_path):
+    resolved_path = request_path[0 : -len(unconsumed_path)]
+    if resolved_path.startswith("/"):
+        resolved_path = resolved_path[1:]
+    if resolved_path.endswith("/"):
+        resolved_path = resolved_path[:-1]
+    if resolved_path == "":
+        return 0
+    return len(resolved_path.split("/"))
